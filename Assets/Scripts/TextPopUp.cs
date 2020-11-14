@@ -1,23 +1,20 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using TMPro;
 using UnityEngine;
-using UnityEngine.UI;
 
 public class TextPopUp : MonoBehaviour
 {
-    Text text;
-    float fade = 1;
-    // Start is called before the first frame update
+    private TextMeshProUGUI textMesh;
+    private float fade = 1;
+
     void Start()
     {
-        text = GetComponent<Text>();
+        textMesh = GetComponent<TextMeshProUGUI>();
     }
 
-    // Update is called once per frame
     void Update()
     {
         fade -= Time.deltaTime;
-        text.color = new Color(text.color.r, text.color.g, text.color.b,fade);
+        textMesh.color = new Color(textMesh.color.r, textMesh.color.g, textMesh.color.b,fade);
         transform.position += transform.up * Time.deltaTime;
         if (fade < 0)
         {

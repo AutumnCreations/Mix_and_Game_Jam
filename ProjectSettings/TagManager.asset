@@ -10,6 +10,7 @@ TagManager:
   - buildingPreviewer
   - Ball
   - Enemy
+  - buildingKit
   layers:
   - Default
   - TransparentFX

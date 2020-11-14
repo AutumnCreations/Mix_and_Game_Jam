@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
 public class Enemy : MonoBehaviour
@@ -8,6 +9,13 @@ public class Enemy : MonoBehaviour
     [SerializeField] int health = 1;
     [SerializeField] int damage = 1;
     [SerializeField] float speed = .5f;
+
+    private ExtraBounce bounce;
+
+    private void Start()
+    {
+        bounce = GetComponent<ExtraBounce>();
+    }
 
     void Update()
     {
@@ -29,7 +37,9 @@ public class Enemy : MonoBehaviour
 
     private void TakeDamage(int damageTaken)
     {
+        bounce.textMesh.text = damageTaken.ToString();
         health -= damageTaken;
+
         if (health <= 0)
         {
             Die();

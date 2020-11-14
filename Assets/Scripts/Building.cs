@@ -16,7 +16,7 @@ public class Building : MonoBehaviour
 
     private float currentTime = 0;
 
-     CountCollisions countCollisions;
+    CountCollisions countCollisions;
 
     void Start()
     {
@@ -25,28 +25,25 @@ public class Building : MonoBehaviour
 
     void Update()
     {
-        
-
-
         currentTime += Time.deltaTime;
         if (currentTime > timeToSpawn)
         {
             currentTime = 0;
             Instantiate(unthrownBallPrefab, ballSpawnPosition.position - transform.forward, Quaternion.identity);
         }
-        
 
-       
+
+
     }
 
     void PlaceBuilding()
     {
-        bool openSpace=true;
-        foreach(GameObject collidedObject in countCollisions.collisions)
+        bool openSpace = true;
+        foreach (GameObject collidedObject in countCollisions.collisions)
         {
             if (collidedObject.tag == "buildingPrefab")
             {
-                openSpace=false;
+                openSpace = false;
                 break;
             }
         }
