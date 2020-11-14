@@ -6,6 +6,7 @@ public class Ball : MonoBehaviour
     [SerializeField] float randomOffsetMin = .01f;
     [Tooltip("Maximum force to add to the ball when colliding with a peg")]
     [SerializeField] float randomOffsetMax = .1f;
+    [SerializeField] Vector2 startingForce;
 
     
     //Force to add to the ball when colliding with a peg
@@ -17,6 +18,7 @@ public class Ball : MonoBehaviour
     void Start()
     {
         ballBody = GetComponent<Rigidbody2D>();
+        ballBody.AddForce( startingForce );
     }
 
     void Update()

@@ -99,6 +99,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ballPrefab: {fileID: 6747201320092928827, guid: ec212a659812020419ac960786524340,
     type: 3}
+  buildingPreviewer: {fileID: 0}
+  speed: 2.5
   holding: {fileID: 0}
 --- !u!50 &7840463127583982202
 Rigidbody2D:

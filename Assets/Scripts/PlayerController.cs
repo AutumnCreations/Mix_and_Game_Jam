@@ -5,6 +5,8 @@ using UnityEngine;
 public class PlayerController : MonoBehaviour
 {
     [SerializeField] GameObject ballPrefab;    
+    [SerializeField] GameObject buildingPreviewer;    
+    [SerializeField] float speed;    
 
     float horzInput;
 
@@ -33,12 +35,17 @@ public class PlayerController : MonoBehaviour
 
     void FixedUpdate()
     {
-        transform.position += transform.right * horzInput * Time.fixedDeltaTime;
+        transform.position += transform.right * horzInput * speed * Time.fixedDeltaTime;
 
         
 
         if (holding)
         {
+            if (holding.CompareTag("buildingPrefab") )
+            {
+                buildingPreviewer.SetActive(true);
+                buildingPreviewer.transform.position = new Vector3( Mathf.Round(transform.position.x*2)/2, Mathf.Round(transform.position.y*2)/2, -1);
+            }
             //holding.transform.position = transform.position;
             if (actionPress)
             {
@@ -47,8 +54,17 @@ public class PlayerController : MonoBehaviour
                 
                 if (holding.CompareTag("unthrownBall"))
                 {
-                    Destroy(holding);
                     Instantiate( ballPrefab, transform.position, Quaternion.identity );
+                    Destroy(holding);
+                    
+                    
+                }
+
+                if (holding.CompareTag("buildingPrefab"))
+                {
+                    buildingPreviewer.SetActive(false);
+                    Instantiate( holding.GetComponent<BuildingKit>().towerToBuild, buildingPreviewer.transform.position, Quaternion.identity );
+                    Destroy(holding);
                     
                 }
                 

@@ -7,6 +7,8 @@ TagManager:
   - Peg
   - unthrownBall
   - buildingPrefab
+  - buildingPreviewer
+  - Ball
   layers:
   - Default
   - TransparentFX
