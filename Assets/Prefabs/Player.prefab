@@ -100,9 +100,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 74f9419d185991348b1abc45282be9bd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  playerBase: {fileID: 0}
   ballPrefab: {fileID: 6747201320092928827, guid: ec212a659812020419ac960786524340,
     type: 3}
-  speed: 2.5
+  speed: 1
   walkSpeed: 1
   runSpeed: 2
   towerPlacer: {fileID: 3106117309104678755}

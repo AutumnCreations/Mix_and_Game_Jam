@@ -4732,12 +4732,12 @@ PrefabInstance:
     - target: {fileID: 1167554251695404183, guid: ec212a659812020419ac960786524340,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0.25
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1167554251695404183, guid: ec212a659812020419ac960786524340,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.13
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1167554251695404183, guid: ec212a659812020419ac960786524340,
         type: 3}
@@ -4752,12 +4752,12 @@ PrefabInstance:
     - target: {fileID: 2841467334029966114, guid: ec212a659812020419ac960786524340,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0.9601078
+      value: 0.92
       objectReference: {fileID: 0}
     - target: {fileID: 2841467334029966114, guid: ec212a659812020419ac960786524340,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 5.240446
+      value: 1.49
       objectReference: {fileID: 0}
     - target: {fileID: 2841467334029966114, guid: ec212a659812020419ac960786524340,
         type: 3}
@@ -4822,7 +4822,7 @@ PrefabInstance:
     - target: {fileID: 6747201320092928827, guid: ec212a659812020419ac960786524340,
         type: 3}
       propertyPath: m_Name
-      value: Fire Ball Variant
+      value: Fire Ball
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ec212a659812020419ac960786524340, type: 3}

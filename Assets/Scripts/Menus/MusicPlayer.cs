@@ -1,14 +1,13 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.UI;
 
 public class MusicPlayer : MonoBehaviour
 {
+    [SerializeField] Sprite defaultIcon;
+    [SerializeField] Sprite mutedIcon;
 
     AudioSource audioSource;
-    [SerializeField] Sprite[] musicIcons;
-    Image button;
+    Image buttonImage;
 
     bool hasBeenClicked = true;
 
@@ -32,11 +31,10 @@ public class MusicPlayer : MonoBehaviour
 		//}
   //  }
     // Start is called before the first frame update
+
     void Start()
     {
         audioSource = FindObjectOfType<AudioSource>();
-        button = GetComponent<Image>();
-
 
         //audioSource = GetComponent<AudioSource>();
         //audioSource.volume = PlayerPrefsController.GetMasterVolume();
@@ -44,17 +42,19 @@ public class MusicPlayer : MonoBehaviour
 
     public void MuteAudio()
     {
+        buttonImage = GetComponent<Image>();
+
         if(hasBeenClicked)
         {
             audioSource.volume = 0;
             hasBeenClicked = !hasBeenClicked;
-            //button.sprite = musicIcons[1];
+            buttonImage.sprite = mutedIcon;
         }
         else if (!hasBeenClicked)
         {
             audioSource.volume = 1;
             hasBeenClicked = !hasBeenClicked;
-            //button.sprite = musicIcons[0];
+            buttonImage.sprite = defaultIcon;
         }
     }
 
