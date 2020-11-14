@@ -124,7 +124,7 @@ public class PlayerController : MonoBehaviour
             //buildingPreviewer.transform.position = new Vector3(Mathf.Round(objectPlacement.position.x * 2) / 2, Mathf.Round(objectPlacement.position.y * 2) / 2, -1);
             buildingPreviewer.transform.position = towerPlacer.position;
         }
-        if (holding.CompareTag("unthrownBall") && firstRunHolding)
+        else if (holding.CompareTag("unthrownBall") && firstRunHolding)
         {
             holding.transform.position = ballHolder.position;
             firstRunHolding = false;
@@ -132,21 +132,82 @@ public class PlayerController : MonoBehaviour
 
         if (actionPress)
         {
-            holding.transform.SetParent(null);
+           
 
             if (holding.CompareTag("unthrownBall"))
             {
-                Instantiate(ballPrefab, ballHolder.position, Quaternion.identity);
-                Destroy(holding);
+                GameObject closest = null;
+                float distance = 999;
+                bool thrownAlready = false;
+
+                //Loop through all objects the player is colliding with, and find the closest
+                foreach (GameObject collidedObj in countCollisions.collisions)
+                {
+
+                    if (collidedObj.CompareTag("buildingPrefab"))
+                    {
+                        if (Vector2.Distance(transform.position, collidedObj.transform.position) < distance)
+                        {
+                            distance = Vector2.Distance(transform.position, collidedObj.transform.position);
+                            closest = collidedObj;
+                        }
+                    }
+                }
+
+                if (closest)
+                {
+                    Building building = closest.GetComponentInParent<Building>();
+                    if (building)
+                    {
+                        if (building.specialBallPrefab)
+                        {
+                            thrownAlready=true;
+                            Instantiate(building.specialBallPrefab, ballHolder.position, Quaternion.identity);
+                            Destroy(holding);
+                        }
+                    }
+                }
+
+
+
+
+                if (!thrownAlready)
+                {
+                    Instantiate(ballPrefab, ballHolder.position, Quaternion.identity);
+                    Destroy(holding);
+                }
+               
             }
 
             if (holding.CompareTag("buildingKit"))
             {
-                buildingPreviewer.gameObject.SetActive(false);
-                Instantiate(holding.GetComponent<BuildingKit>().towerToBuild, buildingPreviewer.transform.position, Quaternion.identity);
-                Destroy(holding);
+                List<GameObject> buildingPreviewerCollisions = buildingPreviewer.GetComponent<CountCollisions>().collisions;
+                bool openSpace = true;
+
+                foreach (GameObject collidedObj in buildingPreviewerCollisions)
+                {
+                    if (collidedObj.CompareTag("buildingPrefab"))
+                    {
+                        openSpace = false;
+                        break;
+                    }
+                }
+
+                if (openSpace)
+                {
+                    holding.transform.SetParent(null);
+                    buildingPreviewer.gameObject.SetActive(false);
+                    Instantiate(holding.GetComponent<BuildingKit>().towerToBuild, buildingPreviewer.transform.position, Quaternion.identity);
+                    Destroy(holding);
+                    holding = null;
+                }
+                else 
+                {
+                    print("I Cannot build here you dummy!");
+                }
+                
             }
-            holding = null;
+           
         }
     }
 }

@@ -40,7 +40,6 @@ GameObject:
   m_Component:
   - component: {fileID: 5854096433509191104}
   - component: {fileID: 168285619550368989}
-  - component: {fileID: 2931735235971514221}
   m_Layer: 0
   m_Name: Building
   m_TagString: buildingPrefab
@@ -76,36 +75,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b83c9f5029e91bb4788cf91ab87ca66b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  spawner: 1
   timeToSpawn: 2
+  specialBallPrefab: {fileID: 0}
   unthrownBallPrefab: {fileID: 2159501037414461779, guid: 9833b4d683f0ace4cb83e6f9382c62fe,
     type: 3}
   ballSpawnPosition: {fileID: 7483463074746125934}
---- !u!61 &2931735235971514221
-BoxCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2936257677035006133}
-  m_Enabled: 0
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 1, y: 1}
-    newSize: {x: 0.16, y: 0.16}
-    adaptiveTilingThreshold: 0.5
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  serializedVersion: 2
-  m_Size: {x: 0.14246336, y: 0.14246336}
-  m_EdgeRadius: 0
 --- !u!1 &7612383303888274311
 GameObject:
   m_ObjectHideFlags: 0
@@ -116,9 +91,10 @@ GameObject:
   m_Component:
   - component: {fileID: 7290750320818462729}
   - component: {fileID: 6822291077291461161}
+  - component: {fileID: 2005765405711716339}
   m_Layer: 0
   m_Name: Sprite
-  m_TagString: Untagged
+  m_TagString: buildingPrefab
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -187,3 +163,29 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!61 &2005765405711716339
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7612383303888274311}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 1, y: 1}
+    newSize: {x: 0.16, y: 0.16}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1}
+  m_EdgeRadius: 0

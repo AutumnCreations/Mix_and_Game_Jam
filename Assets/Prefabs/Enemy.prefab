@@ -183,7 +183,7 @@ MonoBehaviour:
   health: 3
   damage: 1
   speed: 0.25
-  rotationSpeed: 0.01
+  rotationSpeed: 100
   randomOffsetMin: 0.01
   randomOffsetMax: 0.1
 --- !u!114 &7634906685512074803

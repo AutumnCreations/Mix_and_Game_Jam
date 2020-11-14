@@ -15,9 +15,9 @@ public class Base : MonoBehaviour
         }
     }
 
-    public void GetGold()
+    public void GetGold(int amount)
     {
-
+        gold += amount;
     }
 
     public bool SpendGold(int amount)

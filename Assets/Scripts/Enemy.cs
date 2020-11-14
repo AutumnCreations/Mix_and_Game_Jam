@@ -21,19 +21,40 @@ public class Enemy : MonoBehaviour
     private Collider2D lastPeg;
     private Rigidbody2D enemyBody;
 
+    Transform playerBaseTransform;
+
     private void Start()
     {
         enemyBody = GetComponent<Rigidbody2D>();
         bounce = GetComponent<ExtraBounce>();
+
+        playerBaseTransform = FindObjectOfType<Base>().transform;
     }
 
     void Update()
     {
         transform.position += transform.up * speed * Time.deltaTime;
+
+    }
+
+    void FixedUpdate()
+    {
+        /*
+        
+        enemyBody.MovePosition ( transform.forward * (speed) * Time.deltaTime );
+        // += transform.up * speed * Time.deltaTime;
+
+        Vector2 direction = (playerBaseTransform.position - transform.position).normalized;
+        float ang = Vector2.Angle(transform.position, (new Vector2(transform.position.x, transform.position.y)+direction) );
+
+        enemyBody.rotation = ang;//Mathf.Lerp(enemyBody.rotation, ang, Time.deltaTime * rotationSpeed);
+
+        */
     }
 
     private void Die()
     {
+        FindObjectOfType<Base>().GetGold(1);
         Destroy(gameObject.GetComponent<Collider2D>());
         //Destroy(gameObject.GetComponent<Collider2D>());
         StartCoroutine("WaitToDie");

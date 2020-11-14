@@ -8,7 +8,10 @@ public class Building : MonoBehaviour
 
 
     [Header("Building Stats")]
+    [SerializeField] bool spawner=true;
     [SerializeField] float timeToSpawn = 3;
+
+    [SerializeField] public GameObject specialBallPrefab;
 
     [Header("References")]
     [SerializeField] GameObject unthrownBallPrefab;
@@ -26,7 +29,7 @@ public class Building : MonoBehaviour
     void Update()
     {
         currentTime += Time.deltaTime;
-        if (currentTime > timeToSpawn)
+        if (spawner && currentTime > timeToSpawn)
         {
             currentTime = 0;
             Instantiate(unthrownBallPrefab, ballSpawnPosition.position - transform.forward, Quaternion.identity);
