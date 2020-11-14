@@ -7,6 +7,7 @@ public class Ball : MonoBehaviour
     [Tooltip("Maximum force to add to the ball when colliding with a peg")]
     [SerializeField] float randomOffsetMax = .1f;
 
+    
     //Force to add to the ball when colliding with a peg
     float xOffset;
     Rigidbody2D ballBody;

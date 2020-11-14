@@ -5,24 +5,27 @@ using UnityEngine;
 public class Building : MonoBehaviour
 {
 
-    [SerializeField] GameObject unthrownBallPrefab;
+    [Header("Building Stats")]
     [SerializeField] float timeToSpawn = 3;
-    float currentTime=0;
 
-    // Start is called before the first frame update
+    [Header("References")]
+    [SerializeField] GameObject unthrownBallPrefab;
+    [SerializeField] Transform ballSpawnPosition;
+
+    private float currentTime=0;
+
     void Start()
     {
         
     }
 
-    // Update is called once per frame
     void Update()
     {
         currentTime += Time.deltaTime;
         if (currentTime > timeToSpawn)
         {
             currentTime=0;
-            Instantiate(unthrownBallPrefab, transform.position - transform.forward, Quaternion.identity);
+            Instantiate(unthrownBallPrefab, ballSpawnPosition.position - transform.forward, Quaternion.identity);
         }
     }
 }
