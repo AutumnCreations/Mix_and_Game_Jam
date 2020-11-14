@@ -7,6 +7,8 @@ public class Ball : MonoBehaviour
     [Tooltip("Maximum force to add to the ball when colliding with a peg")]
     [SerializeField] float randomOffsetMax = .1f;
 
+    [SerializeField] public int damage = 1;
+
     
     //Force to add to the ball when colliding with a peg
     float xOffset;
@@ -22,7 +24,7 @@ public class Ball : MonoBehaviour
     private void OnCollisionEnter2D(Collision2D collision)
     {
 
-        if (collision.gameObject.CompareTag("Peg"))
+        if (collision.gameObject.CompareTag("Peg") || collision.gameObject.CompareTag("Enemy"))
         {
             if (lastPeg == null || lastPeg != collision.collider)
             {

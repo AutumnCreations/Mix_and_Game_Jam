@@ -46,7 +46,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b83c9f5029e91bb4788cf91ab87ca66b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  timeToSpawn: 10
+  timeToSpawn: 2
   unthrownBallPrefab: {fileID: 2159501037414461779, guid: 9833b4d683f0ace4cb83e6f9382c62fe,
     type: 3}
   ballSpawnPosition: {fileID: 8757747885112740201}

@@ -25,6 +25,8 @@ public class Base : MonoBehaviour
         {
             TakeDamage(collision.GetComponent<Enemy>().DealDamage());
             print(health);
+
+            Destroy(collision.gameObject);
         }
     }
 }
