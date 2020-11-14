@@ -4,95 +4,105 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
-    [SerializeField] GameObject ballPrefab;    
+    [Header("Held Object")]
+    [SerializeField] GameObject ballPrefab;
+    [SerializeField] GameObject holding = null;
 
-    float horzInput;
+    [Header("Player Stats")]
+    [SerializeField] float walkSpeed = 1f;
+    [SerializeField] float runSpeed = 1.5f;
 
-    bool actionPress;
-
-    [SerializeField]
-    GameObject holding = null;
+    private float horzInput;
+    private bool actionPress;
+    private float speed;
 
     CountCollisions countCollisions;
 
-    // Start is called before the first frame update
     void Start()
     {
         countCollisions = GetComponent<CountCollisions>();
+        speed = walkSpeed;
     }
 
-    // Update is called once per frame
     void Update()
     {
-        horzInput = Input.GetAxis("Horizontal");
-        if (Input.GetButtonDown("Fire1"))
-        {
-            actionPress=true;
-        }
+        GetUserInput();
     }
 
     void FixedUpdate()
     {
-        transform.position += transform.right * horzInput * Time.fixedDeltaTime;
+        transform.position += transform.right * horzInput * speed * Time.fixedDeltaTime;
 
-        
-
-        if (holding)
+        if (actionPress)
         {
-            //holding.transform.position = transform.position;
-            if (actionPress)
+            if (holding)
             {
-                
-                holding.transform.SetParent(null);
-                
-                if (holding.CompareTag("unthrownBall"))
+                //holding.transform.position = transform.position;
+                if (actionPress)
                 {
-                    Destroy(holding);
-                    Instantiate( ballPrefab, transform.position, Quaternion.identity );
-                    
-                }
-                
-                
-                holding=null;
-
-              
-            }
-        }
-        else 
-        {
-            if (actionPress)
-            {
-                GameObject closest = null;
-                float distance = 999;
-                
-                //Loop through all objects the player is colliding with, and find the closest
-                foreach (GameObject collidedObj in countCollisions.collisions)
-                {
-                    
-                    if (collidedObj.CompareTag("buildingPrefab") || collidedObj.CompareTag("unthrownBall"))
-                    {
-                        if (Vector2.Distance(transform.position, collidedObj.transform.position) < distance)
-                        {
-                            distance = Vector2.Distance(transform.position, collidedObj.transform.position);
-                            closest = collidedObj;
-                        }
-                    }
-
-                    
-                }
-
-                //grab hold of the closest object
-                if (closest)
-                {
-                    holding = closest;
-                    holding.transform.SetParent(transform);
+                    DropObject();
                 }
             }
+            else
+            {
+                GrabObject();
+            }
+        }
+        actionPress = false;
+    }
 
-            
+    private void GetUserInput()
+    {
+        horzInput = Input.GetAxis("Horizontal");
+        if (Input.GetButtonDown("Fire1") || Input.GetKeyDown(KeyCode.Space))
+        {
+            actionPress = true;
+        }
+        if (Input.GetKeyDown(KeyCode.RightShift))
+        {
+            speed = runSpeed;
+        }
+        else if (Input.GetKeyUp(KeyCode.RightShift))
+        {
+            speed = walkSpeed;
+        }
+    }
+
+    private void GrabObject()
+    {
+        GameObject closest = null;
+        float distance = 999;
+
+        //Loop through all objects the player is colliding with, and find the closest
+        foreach (GameObject collidedObj in countCollisions.collisions)
+        {
+            if (collidedObj.CompareTag("buildingPrefab") || collidedObj.CompareTag("unthrownBall"))
+            {
+                if (Vector2.Distance(transform.position, collidedObj.transform.position) < distance)
+                {
+                    distance = Vector2.Distance(transform.position, collidedObj.transform.position);
+                    closest = collidedObj;
+                }
+            }
         }
 
+        //grab hold of the closest object
+        if (closest)
+        {
+            holding = closest;
+            holding.transform.SetParent(transform);
+        }
+    }
 
-        actionPress=false;
+    private void DropObject()
+    {
+        holding.transform.SetParent(null);
+
+        if (holding.CompareTag("unthrownBall"))
+        {
+            Destroy(holding);
+            Instantiate(ballPrefab, transform.position, Quaternion.identity);
+        }
+        holding = null;
     }
 }

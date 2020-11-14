@@ -19,11 +19,6 @@ public class Ball : MonoBehaviour
         ballBody = GetComponent<Rigidbody2D>();
     }
 
-    void Update()
-    {
-
-    }
-
     private void OnCollisionEnter2D(Collision2D collision)
     {
 
@@ -39,8 +34,6 @@ public class Ball : MonoBehaviour
 
             lastPeg = collision.collider;
         }
-
-        print(xOffset);
     }
 
 }

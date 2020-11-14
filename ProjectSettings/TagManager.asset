@@ -7,6 +7,7 @@ TagManager:
   - Peg
   - unthrownBall
   - buildingPrefab
+  - Enemy
   layers:
   - Default
   - TransparentFX

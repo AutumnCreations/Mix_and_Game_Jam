@@ -100,6 +100,8 @@ MonoBehaviour:
   ballPrefab: {fileID: 6747201320092928827, guid: ec212a659812020419ac960786524340,
     type: 3}
   holding: {fileID: 0}
+  walkSpeed: 1
+  runSpeed: 1.5
 --- !u!50 &7840463127583982202
 Rigidbody2D:
   serializedVersion: 4
@@ -145,7 +147,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.16, y: 0.16}
+  m_Size: {x: 0.14124107, y: 0.14124107}
   m_EdgeRadius: 0
 --- !u!114 &8463859473209413309
 MonoBehaviour:

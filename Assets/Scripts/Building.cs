@@ -12,19 +12,14 @@ public class Building : MonoBehaviour
     [SerializeField] GameObject unthrownBallPrefab;
     [SerializeField] Transform ballSpawnPosition;
 
-    private float currentTime=0;
-
-    void Start()
-    {
-        
-    }
+    private float currentTime = 0;
 
     void Update()
     {
         currentTime += Time.deltaTime;
         if (currentTime > timeToSpawn)
         {
-            currentTime=0;
+            currentTime = 0;
             Instantiate(unthrownBallPrefab, ballSpawnPosition.position - transform.forward, Quaternion.identity);
         }
     }
