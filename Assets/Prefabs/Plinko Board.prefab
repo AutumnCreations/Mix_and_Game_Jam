@@ -756,7 +756,7 @@ BoxCollider2D:
   m_GameObject: {fileID: 1781569149672551953}
   m_Enabled: 1
   m_Density: 1
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 6200000, guid: 486f0a542190a0d4c88ddffb83edfd55, type: 2}
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
@@ -979,7 +979,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   boardSize: {x: 7, y: 10}
   evenRowOffset: 0.5
-  pegOffsetX: 0.5
+  pegOffsetX: 0.75
   pegOffsetY: 0.5
   pegPrefab: {fileID: 8699746087842570038, guid: ef8168e85bf525849ba7d95c2d4346a3,
     type: 3}
@@ -1575,7 +1575,7 @@ BoxCollider2D:
   m_GameObject: {fileID: 8325431285607720404}
   m_Enabled: 1
   m_Density: 1
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 6200000, guid: 486f0a542190a0d4c88ddffb83edfd55, type: 2}
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0

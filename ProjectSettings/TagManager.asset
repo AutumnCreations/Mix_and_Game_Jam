@@ -9,6 +9,7 @@ TagManager:
   - buildingPrefab
   - buildingPreviewer
   - Ball
+  - Enemy
   layers:
   - Default
   - TransparentFX

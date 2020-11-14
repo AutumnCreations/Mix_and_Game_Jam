@@ -7,6 +7,8 @@ public class PlayerController : MonoBehaviour
     [SerializeField] GameObject ballPrefab;    
     [SerializeField] GameObject buildingPreviewer;    
     [SerializeField] float speed;    
+    [SerializeField] float walkSpeed;    
+    [SerializeField] float runSpeed;    
 
     float horzInput;
 
@@ -26,10 +28,23 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+       GetUserInput();
+    }
+
+    private void GetUserInput()
+    {
         horzInput = Input.GetAxis("Horizontal");
-        if (Input.GetButtonDown("Fire1"))
+        if (Input.GetButtonDown("Fire1") || Input.GetKeyDown(KeyCode.Space))
         {
-            actionPress=true;
+            actionPress = true;
+        }
+        if (Input.GetKeyDown(KeyCode.RightShift))
+        {
+            speed = runSpeed;
+        }
+        else if (Input.GetKeyUp(KeyCode.RightShift))
+        {
+            speed = walkSpeed;
         }
     }
 
@@ -111,4 +126,8 @@ public class PlayerController : MonoBehaviour
 
         actionPress=false;
     }
+
+
+
 }
+

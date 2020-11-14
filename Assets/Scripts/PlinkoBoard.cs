@@ -32,11 +32,10 @@ public class PlinkoBoard : MonoBehaviour
             for (int x = 0; x < boardSize.x; x++)
             {
 
-                Vector2 spawnPosition = new Vector2(pegs.position.x + x - rowOffset, pegs.position.y - (pegOffsetY * y));
+                Vector2 spawnPosition = new Vector2(pegs.position.x + (x * pegOffsetX) - rowOffset, pegs.position.y - (pegOffsetY * y));
                 GameObject peg = Instantiate(pegPrefab, spawnPosition, Quaternion.identity);
                 peg.transform.parent = pegs;
                 pegList.Add(peg);
-                print(spawnPosition);
             }
         }
     }
