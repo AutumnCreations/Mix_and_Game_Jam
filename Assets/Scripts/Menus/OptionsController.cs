@@ -21,7 +21,7 @@ public class OptionsController : MonoBehaviour
         var musicPlayer = FindObjectOfType<MusicPlayer>();
         if(musicPlayer)
         {
-            musicPlayer.SetVolume(volumeSlider.value);
+            //musicPlayer.SetVolume(volumeSlider.value);
         }
     }
 
