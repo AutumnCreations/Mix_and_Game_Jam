@@ -2,11 +2,11 @@
 
 public class BuildingPreviewer : MonoBehaviour
 {
-    [SerializeField] Building buildingToInstantiate;
+    [SerializeField] public Building buildingToInstantiate;
 
     private SpriteRenderer buildingSprite;
 
-    private void Awake()
+    public void SetBuildingSprite()
     {
         buildingSprite = gameObject.GetComponentInChildren<SpriteRenderer>();
         buildingSprite.sprite = buildingToInstantiate.GetComponentInChildren<SpriteRenderer>().sprite;

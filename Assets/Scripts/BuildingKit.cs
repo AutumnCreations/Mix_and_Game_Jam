@@ -1,19 +1,7 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class BuildingKit : MonoBehaviour
 {
-    [SerializeField] public GameObject towerToBuild;
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    [SerializeField] public Building towerToBuild;
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
 }

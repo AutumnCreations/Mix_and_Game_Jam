@@ -9,11 +9,21 @@ public class Enemy : MonoBehaviour
     [SerializeField] int health = 1;
     [SerializeField] int damage = 1;
     [SerializeField] float speed = .5f;
+    [SerializeField] float rotationSpeed = 1f;
+    [Tooltip("Minimum force to add to the ball when colliding with a peg")]
+    [SerializeField] float randomOffsetMin = .01f;
+    [Tooltip("Maximum force to add to the ball when colliding with a peg")]
+    [SerializeField] float randomOffsetMax = .1f;
+
+    private float xOffset;
 
     private ExtraBounce bounce;
+    private Collider2D lastPeg;
+    private Rigidbody2D enemyBody;
 
     private void Start()
     {
+        enemyBody = GetComponent<Rigidbody2D>();
         bounce = GetComponent<ExtraBounce>();
     }
 
@@ -57,6 +67,22 @@ public class Enemy : MonoBehaviour
         if (collision.gameObject.GetComponent<Ball>())
         {
             TakeDamage(collision.gameObject.GetComponent<Ball>().damage);
+        }
+        else if (collision.gameObject.CompareTag("Peg"))
+        {
+            if (lastPeg == null || lastPeg != collision.collider)
+            {
+                xOffset = Random.Range(randomOffsetMin, randomOffsetMax);
+                //Returns xOffset randomly as positive or negative
+                xOffset *= Random.Range(0, 2) * 2 - 1;
+            }
+            enemyBody.AddForce(new Vector2(xOffset, 0));
+
+            lastPeg = collision.collider;
+        }
+        else if (collision.gameObject.CompareTag("Wall"))
+        {
+            transform.localRotation = Quaternion.Inverse(transform.localRotation);
         }
     }
 }

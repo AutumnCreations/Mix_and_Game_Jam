@@ -11,6 +11,7 @@ TagManager:
   - Ball
   - Enemy
   - buildingKit
+  - Wall
   layers:
   - Default
   - TransparentFX
@@ -23,7 +24,7 @@ TagManager:
   - Ground
   - Ball
   - Player
-  - 
+  - Enemy
   - 
   - 
   - 
@@ -45,6 +46,12 @@ TagManager:
   - 
   - 
   m_SortingLayers:
+  - name: Background
+    uniqueID: 4071525089
+    locked: 0
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: Foreground
+    uniqueID: 2027359999
     locked: 0

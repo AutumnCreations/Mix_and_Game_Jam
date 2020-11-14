@@ -5,23 +5,26 @@ using UnityEngine;
 public class PlayerController : MonoBehaviour
 {
     [SerializeField] GameObject ballPrefab;
-    [SerializeField] GameObject buildingPreviewer;
     [SerializeField] float speed;
     [SerializeField] float walkSpeed;
     [SerializeField] float runSpeed;
-    [SerializeField] Transform objectPlacement;
+    [SerializeField] Transform towerPlacer;
+    [SerializeField] Transform ballHolder;
 
     float horzInput;
-
     bool actionPress;
+    bool firstRunHolding = false;
 
     [SerializeField]
     GameObject holding = null;
 
+    BuildingPreviewer buildingPreviewer;
     CountCollisions countCollisions;
 
     void Start()
     {
+        buildingPreviewer = FindObjectOfType<BuildingPreviewer>();
+        buildingPreviewer.gameObject.SetActive(false);
         countCollisions = GetComponent<CountCollisions>();
     }
 
@@ -86,6 +89,7 @@ public class PlayerController : MonoBehaviour
         {
             holding = closest;
             holding.transform.SetParent(transform);
+            firstRunHolding = true;
         }
     }
 
@@ -93,9 +97,20 @@ public class PlayerController : MonoBehaviour
     {
         if (holding.CompareTag("buildingKit"))
         {
-            buildingPreviewer.SetActive(true);
+            if (firstRunHolding)
+            {
+                buildingPreviewer.gameObject.SetActive(true);
+                buildingPreviewer.buildingToInstantiate = holding.GetComponent<BuildingKit>().towerToBuild;
+                buildingPreviewer.SetBuildingSprite();
+                firstRunHolding = false;
+            }
             //buildingPreviewer.transform.position = new Vector3(Mathf.Round(objectPlacement.position.x * 2) / 2, Mathf.Round(objectPlacement.position.y * 2) / 2, -1);
-            buildingPreviewer.transform.position = objectPlacement.position;
+            buildingPreviewer.transform.position = towerPlacer.position;
+        }
+        if (holding.CompareTag("unthrownBall") && firstRunHolding)
+        {
+            holding.transform.position = ballHolder.position;
+            firstRunHolding = false;
         }
 
         if (actionPress)
@@ -104,13 +119,13 @@ public class PlayerController : MonoBehaviour
 
             if (holding.CompareTag("unthrownBall"))
             {
-                Instantiate(ballPrefab, transform.position, Quaternion.identity);
+                Instantiate(ballPrefab, ballHolder.position, Quaternion.identity);
                 Destroy(holding);
             }
 
             if (holding.CompareTag("buildingKit"))
             {
-                buildingPreviewer.SetActive(false);
+                buildingPreviewer.gameObject.SetActive(false);
                 Instantiate(holding.GetComponent<BuildingKit>().towerToBuild, buildingPreviewer.transform.position, Quaternion.identity);
                 Destroy(holding);
             }
