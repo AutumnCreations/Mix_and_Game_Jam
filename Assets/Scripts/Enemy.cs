@@ -6,7 +6,7 @@ using UnityEngine;
 public class Enemy : MonoBehaviour
 {
     [Header("Enemy Stats")]
-    [SerializeField] int health = 1;
+    [SerializeField] int health = 3;
     [SerializeField] int damage = 1;
     [SerializeField] float speed = .5f;
     [SerializeField] float rotationSpeed = 1f;
@@ -35,6 +35,7 @@ public class Enemy : MonoBehaviour
     private void Die()
     {
         Destroy(gameObject.GetComponent<Collider2D>());
+        //Destroy(gameObject.GetComponent<Collider2D>());
         StartCoroutine("WaitToDie");
     }
 

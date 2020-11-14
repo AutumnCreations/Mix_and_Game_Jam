@@ -18,7 +18,7 @@ public class TextPopUp : MonoBehaviour
         transform.position += transform.up * Time.deltaTime;
         if (fade < 0)
         {
-            Destroy(gameObject);
+            Destroy(transform.parent.parent.gameObject);    //destroys parent gameobject with separate canvas
         }
     }
 }

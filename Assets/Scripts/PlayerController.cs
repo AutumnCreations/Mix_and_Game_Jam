@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
+    [SerializeField] Base playerBase;
     [SerializeField] GameObject ballPrefab;
     [SerializeField] float speed;
     [SerializeField] float walkSpeed;
@@ -87,9 +88,25 @@ public class PlayerController : MonoBehaviour
         //grab hold of the closest object
         if (closest)
         {
-            holding = closest;
-            holding.transform.SetParent(transform);
-            firstRunHolding = true;
+            if (closest.CompareTag("buildingKit"))
+            {
+                 //picking up a building kit or making another purchase from the store
+                bool canAfford = playerBase.SpendGold(closest.GetComponent<BuildingKit>().cost);    //true if have enough money. automatically detracts cost.
+                if (canAfford)
+                {
+                    holding = closest;
+                    holding.transform.SetParent(transform);
+                    firstRunHolding = true;
+                }
+            }
+            else
+            {
+                //picking up a ball or another holdable object
+                holding = closest;
+                holding.transform.SetParent(transform);
+                firstRunHolding = true;
+            }
+            
         }
     }
 

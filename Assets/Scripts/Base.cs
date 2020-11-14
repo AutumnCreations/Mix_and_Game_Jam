@@ -3,7 +3,8 @@
 public class Base : MonoBehaviour
 {
     [Header("Base Stats")]
-    [SerializeField] int health = 20;
+    [SerializeField] public int health = 20;
+    [SerializeField] public int gold = 30;
 
     public void TakeDamage(int damage)
     {
@@ -13,6 +14,26 @@ public class Base : MonoBehaviour
             GameOver();
         }
     }
+
+    public void GetGold()
+    {
+
+    }
+
+    public bool SpendGold(int amount)
+    {
+        if (amount > gold)
+        {
+            return false;
+        }
+        else 
+        {
+            gold -= amount;
+            return true;
+        }
+
+    }
+
 
     private void GameOver()
     {

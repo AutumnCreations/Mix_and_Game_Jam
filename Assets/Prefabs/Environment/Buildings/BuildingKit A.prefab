@@ -73,6 +73,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   towerToBuild: {fileID: 168285619550368989, guid: 4106ced43421e8548bdda4618b4858bc,
     type: 3}
+  cost: 10
 --- !u!1 &5988255772568105989
 GameObject:
   m_ObjectHideFlags: 0
