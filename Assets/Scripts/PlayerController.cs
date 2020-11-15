@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 public class PlayerController : MonoBehaviour
 {
@@ -26,6 +27,8 @@ public class PlayerController : MonoBehaviour
     BuildingPreviewer buildingPreviewer;
     CountCollisions countCollisions;
     BallCart ballCart;
+
+    [SerializeField] public GameObject textPrefab;
 
     void Start()
     {
@@ -86,7 +89,7 @@ public class PlayerController : MonoBehaviour
         foreach (GameObject collidedObj in countCollisions.collisions)
         {
 
-            if (collidedObj.CompareTag("shopSlot") || collidedObj.CompareTag("ballCart"))
+            if (collidedObj.CompareTag("shopSlot") || collidedObj.CompareTag("ballCart") || collidedObj.CompareTag("waveStart") )
             {
                 if (Vector2.Distance(transform.position, collidedObj.transform.position) < distance)
                 {
@@ -99,6 +102,8 @@ public class PlayerController : MonoBehaviour
         //grab hold of the closest object
         if (closest)
         {
+
+
             if (closest.CompareTag("shopSlot"))
             {
                 var shopSlot = closest.GetComponent<ShopSlot>();
@@ -112,6 +117,12 @@ public class PlayerController : MonoBehaviour
                     shopSlot.SellKit();
                     firstRunHolding = true;
                 }
+                else 
+                {
+                    GameObject x = Instantiate(textPrefab);
+                    x.transform.position = transform.position;
+                    x.GetComponentInChildren<TextMeshProUGUI>().text = "Not enough money!";
+                }
             }
             else if (closest.CompareTag("ballCart") && ballCart.currentBalls > 0)
             {
@@ -122,6 +133,17 @@ public class PlayerController : MonoBehaviour
                 //holding.transform.SetParent(transform);
                 firstRunHolding = true;
             }
+            else if (closest.CompareTag("waveStart"))
+            {
+                
+                FindObjectOfType<WaveManager>().StartWave();
+                BuildingKit[] kits = FindObjectsOfType<BuildingKit>();
+                foreach (BuildingKit kit in kits)
+                {
+                    Destroy(kit.gameObject);
+                }
+            }
+            
 
         }
     }

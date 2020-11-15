@@ -44,9 +44,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: be71d07578882d14993a726253bbff00, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 20
+  health: 5
   gold: 30
-  score: 0
 --- !u!61 &4996549828192475934
 BoxCollider2D:
   m_ObjectHideFlags: 0

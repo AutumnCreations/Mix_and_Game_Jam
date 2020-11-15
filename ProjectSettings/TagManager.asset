@@ -15,6 +15,7 @@ TagManager:
   - Plot
   - ballCart
   - shopSlot
+  - waveStart
   layers:
   - Default
   - TransparentFX

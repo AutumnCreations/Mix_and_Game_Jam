@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class WaveManager : MonoBehaviour
 {
+    [SerializeField] GameObject cart;
+    [SerializeField] GameObject startWave;
     [SerializeField] GameObject text;
     [SerializeField] Transform enemySpawners;
     [SerializeField] Transform enemyTrans;
@@ -16,21 +18,31 @@ public class WaveManager : MonoBehaviour
 
     float timer=0;
 
+    public bool attacking=true;
     WaveClass currentWave;
     // Start is called before the first frame update
     void Start()
     {
-        text.GetComponent<WaveText>().Display(waveNumber);
+        //text.GetComponent<WaveText>().Display(waveNumber);
         currentWave = waves[waveNumber];
     }
 
     // Update is called once per frame
     void Update()
     {
-        
-
-        if (spawnNumber<currentWave.enemies.Count)
+        if (!attacking)
         {
+
+        }
+
+        if (spawnNumber<currentWave.enemies.Count && attacking)
+        {
+            cart.SetActive(true);
+            startWave.SetActive(false);
+
+
+
+            
             timer += Time.deltaTime;
             if (timer > currentWave.spawnDelay)
             {
@@ -46,27 +58,49 @@ public class WaveManager : MonoBehaviour
         }
         else 
         {
-            if (enemyTrans.childCount == 0)
+
+            
+
+            
+
+            if (enemyTrans.childCount == 0 && attacking)
             {
+                //cart.SetActive(false);
+                startWave.SetActive(true);
+
+                ShopSlot[] shopSlots = FindObjectsOfType<ShopSlot>();
+                foreach (ShopSlot shopSlot in shopSlots)
+                {
+                    shopSlot.Restock();
+                }
+
+                text.GetComponent<WaveText>().DisplayOver();
+                
+                
                 waveNumber++;
                 spawnNumber=0;
                 timer = 0;
+                attacking=false;
                 
                 if (waveNumber >= waves.Count)
-                {
                     waveNumber--;
-                    text.GetComponent<WaveText>().Display(999);
-                }
-                else 
-                {
-                    text.GetComponent<WaveText>().Display(waveNumber);
-                }
 
                 currentWave = waves[waveNumber];
 
             }
         }
        
+        
+    }
+
+    public void StartWave()
+    {
+        attacking=true;
+        
+        if (waveNumber >= waves.Count-1)
+            text.GetComponent<WaveText>().Display(999);
+        else 
+            text.GetComponent<WaveText>().Display(waveNumber);
         
     }
 }

@@ -24,7 +24,19 @@ public class WaveText : MonoBehaviour
         if (number != 999)
             textMeshPro.text = "Wave " + (number+1) + "!";
         else 
-            textMeshPro.text = "Final Wave!";
+            textMeshPro.text = "Endless Wave!";
+        transform.position = start;
+        fade = 1;
+        textMeshPro.color = new Color(1,0,0,1);
+        show = true;
+        textMeshPro.enabled = true;
+
+    }
+
+    public void DisplayOver()
+    {
+
+        textMeshPro.text = "Wave Cleared!";
         transform.position = start;
         fade = 1;
         textMeshPro.color = new Color(1,0,0,1);

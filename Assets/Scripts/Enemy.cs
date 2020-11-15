@@ -25,6 +25,8 @@ public class Enemy : MonoBehaviour
 
     Transform playerBaseTransform;
 
+
+
     private void Start()
     {
         enemyBody = GetComponent<Rigidbody2D>();
@@ -35,23 +37,19 @@ public class Enemy : MonoBehaviour
 
     void Update()
     {
-        transform.position += transform.up * speed * Time.deltaTime;
+        
 
     }
 
     void FixedUpdate()
     {
-        /*
-        
-        enemyBody.MovePosition ( transform.forward * (speed) * Time.deltaTime );
-        // += transform.up * speed * Time.deltaTime;
+        //Point towards middle/top
 
-        Vector2 direction = (playerBaseTransform.position - transform.position).normalized;
-        float ang = Vector2.Angle(transform.position, (new Vector2(transform.position.x, transform.position.y)+direction) );
+        float AngleRad = Mathf.Atan2(playerBaseTransform.transform.position.y - transform.position.y, playerBaseTransform.transform.position.x - transform.position.x);
+        float AngleDeg = (180 / Mathf.PI) * AngleRad - 90;
+        enemyBody.SetRotation(AngleDeg);
 
-        enemyBody.rotation = ang;//Mathf.Lerp(enemyBody.rotation, ang, Time.deltaTime * rotationSpeed);
-
-        */
+        enemyBody.position += new Vector2(transform.up.x, transform.up.y) * speed * Time.deltaTime;
     }
 
     private void Die()
@@ -87,7 +85,7 @@ public class Enemy : MonoBehaviour
 
     public int DealDamage()
     {
-        print(string.Format("{0} dealt {1} damage.", gameObject.name, damage));
+        //print(string.Format("{0} dealt {1} damage.", gameObject.name, damage));
         return damage;
     }
 

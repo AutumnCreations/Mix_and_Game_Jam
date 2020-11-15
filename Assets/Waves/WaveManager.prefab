@@ -356,12 +356,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1e63f8adaa31b1843837af85cd0e2f51, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  cart: {fileID: 0}
+  startWave: {fileID: 0}
   text: {fileID: 4072605129584752827}
   enemySpawners: {fileID: 665532614}
   enemyTrans: {fileID: 1693207317519753184}
   waves:
   - {fileID: 11400000, guid: e1695427bfc57b64db11f1b974578a82, type: 2}
+  - {fileID: 11400000, guid: 98eb63ed116afbc44ababc7184703ce8, type: 2}
+  - {fileID: 11400000, guid: cf952451265bc2b4d928c92e1772419d, type: 2}
+  - {fileID: 11400000, guid: 0f920faa2e59744418bddbbc92d80b85, type: 2}
   waveNumber: 0
+  attacking: 1
 --- !u!1001 &4072605129941771057
 PrefabInstance:
   m_ObjectHideFlags: 0

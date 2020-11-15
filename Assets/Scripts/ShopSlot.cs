@@ -12,28 +12,22 @@ public class ShopSlot : MonoBehaviour
     private float currentTime = 0;
 
 
-    //void Start()
-    //{
-    //    kitToDispense = kits[Random.Range(0, kits.Length - 1)];
-    //    currentKit = Instantiate(kitToDispense, transform.position, Quaternion.identity);
-    //}
+
 
     void Update()
     {
-        if (!currentKit)
-        {
-            if (currentTime >= restockRate)
-            {
-                kitToDispense = kits[Random.Range(0, kits.Length - 1)];
-                currentKit = Instantiate(kitToDispense, transform.position, Quaternion.identity);
-            }
-            currentTime += Time.deltaTime;
-        }
+       
     }
 
     public void SellKit()
     {
         currentKit = null;
         currentTime = 0;
+    }
+
+    public void Restock()
+    {
+        kitToDispense = kits[Random.Range(0, kits.Length - 1)];
+        currentKit = Instantiate(kitToDispense, transform.position, Quaternion.identity);
     }
 }
