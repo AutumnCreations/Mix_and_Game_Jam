@@ -13,5 +13,8 @@ MonoBehaviour:
   m_Name: Wave1
   m_EditorClassIdentifier: 
   enemies:
-  - {fileID: 0}
-  number: 00000000
+  - {fileID: 4895691156518625631, guid: 1ecc2111c6f645242bbaa96d058d3971, type: 3}
+  - {fileID: 4895691156518625631, guid: 1ecc2111c6f645242bbaa96d058d3971, type: 3}
+  - {fileID: 4895691156518625631, guid: 1ecc2111c6f645242bbaa96d058d3971, type: 3}
+  number: 0a000000140000001e000000
+  spawnDelay: 3

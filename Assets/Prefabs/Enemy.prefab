@@ -180,12 +180,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f31555732a9d37643a19b20207fe6b87, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 3
+  health: 1
   damage: 1
   speed: 0.25
   rotationSpeed: 100
   randomOffsetMin: 0.01
   randomOffsetMax: 0.1
+  vfxParticleSystem: {fileID: 5322219118354461726, guid: fc635a0a9ac774852a851b292039036c,
+    type: 3}
+  durationOfExplosion: 0.2
 --- !u!114 &7634906685512074803
 MonoBehaviour:
   m_ObjectHideFlags: 0
