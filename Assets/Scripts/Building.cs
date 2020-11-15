@@ -4,16 +4,13 @@ using UnityEngine;
 
 public class Building : MonoBehaviour
 {
-
-
-
     [Header("Building Stats")]
     [SerializeField] bool spawner=true;
     [SerializeField] float timeToSpawn = 3;
 
-    [SerializeField] public GameObject specialBallPrefab;
 
     [Header("References")]
+    [SerializeField] public GameObject specialBallPrefab;
     [SerializeField] GameObject unthrownBallPrefab;
     [SerializeField] Transform ballSpawnPosition;
 
@@ -34,9 +31,6 @@ public class Building : MonoBehaviour
             currentTime = 0;
             Instantiate(unthrownBallPrefab, ballSpawnPosition.position - transform.forward, Quaternion.identity);
         }
-
-
-
     }
 
     void PlaceBuilding()
