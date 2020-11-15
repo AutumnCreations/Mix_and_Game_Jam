@@ -164,6 +164,8 @@ MonoBehaviour:
   playerBase: {fileID: 0}
   ballPrefab: {fileID: 6747201320092928827, guid: ec212a659812020419ac960786524340,
     type: 3}
+  plotPrefab: {fileID: 1927768164566986073, guid: 05a9537e56bf29a43830638cd0c7f332,
+    type: 3}
   unthrownBallPrefab: {fileID: 2159501037414461779, guid: 9833b4d683f0ace4cb83e6f9382c62fe,
     type: 3}
   speed: 2

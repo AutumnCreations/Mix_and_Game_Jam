@@ -15,14 +15,20 @@ public class Flipper : MonoBehaviour
     //[SerializeField] Vector2 power = new Vector2(0, 100f);
 
     [SerializeField] float power = 50;
-    Quaternion rotation;
+    float rotation;
+
+    Rigidbody2D rigidbody;
+
+     AudioSource audioSource;
+
+    [SerializeField] AudioClip audioClip;
 
     void Start()
     {
         //hinge = GetComponent<HingeJoint2D>();
         //motor = hinge.motor;
-        Vector3 idleRotation = new Vector3(0, 0, idleZ);
-        Vector3 activeRotation = new Vector3(0, 0, activeZ);
+        rigidbody = GetComponent<Rigidbody2D>();
+        audioSource = FindObjectOfType<AudioSource>();
     }
 
     private void OnCollisionStay2D(Collision2D collision)
@@ -39,37 +45,25 @@ public class Flipper : MonoBehaviour
         }
     }
 
-    void LateUpdate()
+    void Update()
     {
-        if (Input.GetMouseButtonDown(0) || Input.GetKey(KeyCode.Return))
+        if (Input.GetMouseButtonDown(0) || Input.GetButton("Fire2"))
         {
-            rotation = Quaternion.Euler(0, 0, activeZ);
+            if (rotation == idleZ)
+                 audioSource.PlayOneShot(audioClip);
+            rotation = activeZ;
         }
         else
         {
-            rotation = Quaternion.Euler(0, 0, idleZ);
+            rotation = idleZ;
         }
-        transform.rotation = Quaternion.Lerp(transform.rotation, rotation, rotationSpeed * Time.deltaTime);
+        
 
-        //if (Input.GetMouseButtonDown(0) || Input.GetKey(KeyCode.Return))
-        //{
-        //    //hingeCount = 3;
-        //    motor.motorSpeed = speed;
-        //    hinge.motor = motor;
-        //}
-        //else
-        //{
-        //    motor.motorSpeed = -speed;
-        //    hinge.motor = motor;
-        //}
-        //hingeCount--;
-        //if (hingeCount > 0)
-        //{
-        //    hinge.useMotor = true;
-        //}
-        //else
-        //{
-        //    hinge.useMotor = false;
-        //}
+    }
+
+    void FixedUpdate()
+    {
+        float myRotation = Mathf.Lerp(rigidbody.rotation, rotation, rotationSpeed * Time.fixedDeltaTime);
+        rigidbody.MoveRotation(myRotation);
     }
 }

@@ -404,10 +404,25 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2853816878413825953, guid: 87c173e013a2eea4f85aa2eeed1b8ece,
+        type: 3}
+      propertyPath: audioClip
+      value: 
+      objectReference: {fileID: 8300000, guid: 1223be9d831f24b9892464ba6d935a7f, type: 3}
+    - target: {fileID: 4510145752700353497, guid: 87c173e013a2eea4f85aa2eeed1b8ece,
+        type: 3}
+      propertyPath: power
+      value: 150
+      objectReference: {fileID: 0}
     - target: {fileID: 7790334753982767418, guid: 87c173e013a2eea4f85aa2eeed1b8ece,
         type: 3}
       propertyPath: m_Name
       value: Pinball Environment
+      objectReference: {fileID: 0}
+    - target: {fileID: 8212352278526505167, guid: 87c173e013a2eea4f85aa2eeed1b8ece,
+        type: 3}
+      propertyPath: power
+      value: 150
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 87c173e013a2eea4f85aa2eeed1b8ece, type: 3}

@@ -6,6 +6,7 @@ public class PlayerController : MonoBehaviour
 {
     [SerializeField] Base playerBase;
     [SerializeField] GameObject ballPrefab;
+    [SerializeField] GameObject plotPrefab;
     [SerializeField] GameObject unthrownBallPrefab;
     [SerializeField] float speed;
     //[SerializeField] float walkSpeed;
@@ -196,7 +197,10 @@ public class PlayerController : MonoBehaviour
                             thrownAlready = true;
                             Instantiate(building.specialBallPrefab, ballHolder.position, Quaternion.identity);
                             Destroy(holding);
+                            //Destroy building
+                            Instantiate(plotPrefab, building.transform.position, Quaternion.identity);
                             Destroy(building.gameObject);
+                            
                         }
                     }
                 }
