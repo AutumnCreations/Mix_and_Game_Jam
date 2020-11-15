@@ -116,13 +116,34 @@ public class PlayerController : MonoBehaviour
         {
             if (firstRunHolding)
             {
-                buildingPreviewer.gameObject.SetActive(true);
+                
                 buildingPreviewer.buildingToInstantiate = holding.GetComponent<BuildingKit>().towerToBuild;
                 buildingPreviewer.SetBuildingSprite();
                 firstRunHolding = false;
             }
-            //buildingPreviewer.transform.position = new Vector3(Mathf.Round(objectPlacement.position.x * 2) / 2, Mathf.Round(objectPlacement.position.y * 2) / 2, -1);
-            buildingPreviewer.transform.position = towerPlacer.position;
+
+            //buildingPreviewer.transform.position = towerPlacer.position;
+
+            GameObject obj = null;
+            foreach (GameObject collidedObj in countCollisions.collisions)
+            {
+                if (collidedObj.CompareTag("Plot"))
+                {
+                    obj = collidedObj;
+                    break;
+                }
+            }
+
+            if (obj)
+            {
+                buildingPreviewer.transform.position = obj.transform.position;
+                buildingPreviewer.gameObject.SetActive(true);
+                
+            }
+            else 
+            {
+                buildingPreviewer.gameObject.SetActive(false);
+            }
         }
         else if (holding.CompareTag("unthrownBall") && firstRunHolding)
         {
@@ -182,25 +203,29 @@ public class PlayerController : MonoBehaviour
             if (holding.CompareTag("buildingKit"))
             {
                 List<GameObject> buildingPreviewerCollisions = buildingPreviewer.GetComponent<CountCollisions>().collisions;
-                bool openSpace = true;
+                GameObject obj = null;
 
                 foreach (GameObject collidedObj in buildingPreviewerCollisions)
                 {
-                    if (collidedObj.CompareTag("buildingPrefab"))
+                    if (collidedObj.CompareTag("Plot"))
                     {
-                        openSpace = false;
+                        obj = collidedObj;
                         break;
                     }
                 }
 
-                if (openSpace)
+                if (obj)
                 {
+                    
                     holding.transform.SetParent(null);
                     buildingPreviewer.gameObject.SetActive(false);
                     Instantiate(holding.GetComponent<BuildingKit>().towerToBuild, buildingPreviewer.transform.position, Quaternion.identity);
+                    Destroy(obj);
                     Destroy(holding);
                     holding = null;
                 }
+                    
+                
                 else 
                 {
                     print("I Cannot build here you dummy!");
