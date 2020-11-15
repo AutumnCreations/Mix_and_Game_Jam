@@ -46,7 +46,7 @@ public class Flipper : MonoBehaviour
         {
             if (Input.GetKeyDown(KeyCode.Return))
             {
-                Vector2 force = transform.position - collision.gameObject.transform.position;
+                Vector2 force = collision.contacts[0].point - new Vector2(collision.gameObject.transform.position.x,collision.gameObject.transform.position.y);
                 force.Normalize();
                 collision.gameObject.GetComponent<Rigidbody2D>().AddForce(force*power);
             }
