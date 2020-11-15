@@ -44,7 +44,7 @@ public class Base : MonoBehaviour
         if (collision.gameObject.CompareTag("Enemy"))
         {
             TakeDamage(collision.GetComponent<Enemy>().DealDamage());
-            print(health);
+            //print(health);
 
             Destroy(collision.gameObject);
         }

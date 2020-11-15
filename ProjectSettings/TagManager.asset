@@ -13,6 +13,7 @@ TagManager:
   - buildingKit
   - Wall
   - Plot
+  - ballCart
   layers:
   - Default
   - TransparentFX

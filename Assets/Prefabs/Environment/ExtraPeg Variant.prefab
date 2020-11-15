@@ -93,10 +93,28 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c226528b977e76c40b48a22415daae22, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  textPrefab: {fileID: 4981696504279729921, guid: d083212d55533084697deb6e21fbacab,
-    type: 3}
+  textPrefab: {fileID: 0}
   forceFactor: -300
   textMesh: {fileID: 0}
+--- !u!95 &380166589
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6349899045829012707}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 599626923519512438d1326879cdaf4a, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1001 &2352263774813664213
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -107,12 +125,12 @@ PrefabInstance:
     - target: {fileID: 177751856693882671, guid: ef8168e85bf525849ba7d95c2d4346a3,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0.04505104
+      value: 1.3870001
       objectReference: {fileID: 0}
     - target: {fileID: 177751856693882671, guid: ef8168e85bf525849ba7d95c2d4346a3,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 1.0317562
+      value: -0.65299994
       objectReference: {fileID: 0}
     - target: {fileID: 177751856693882671, guid: ef8168e85bf525849ba7d95c2d4346a3,
         type: 3}
@@ -158,6 +176,21 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 177751856693882671, guid: ef8168e85bf525849ba7d95c2d4346a3,
+        type: 3}
+      propertyPath: m_LocalScale.x
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 177751856693882671, guid: ef8168e85bf525849ba7d95c2d4346a3,
+        type: 3}
+      propertyPath: m_LocalScale.y
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 177751856693882671, guid: ef8168e85bf525849ba7d95c2d4346a3,
+        type: 3}
+      propertyPath: m_LocalScale.z
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2537015757305463008, guid: ef8168e85bf525849ba7d95c2d4346a3,
         type: 3}

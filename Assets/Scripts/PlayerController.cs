@@ -6,13 +6,14 @@ public class PlayerController : MonoBehaviour
 {
     [SerializeField] Base playerBase;
     [SerializeField] GameObject ballPrefab;
+    [SerializeField] GameObject unthrownBallPrefab;
     [SerializeField] float speed;
     [SerializeField] float walkSpeed;
     [SerializeField] float runSpeed;
     [SerializeField] Transform towerPlacer;
     [SerializeField] Transform ballHolder;
 
-    Animator animator;    
+    Animator animator;
 
     float horzInput;
     bool actionPress;
@@ -23,9 +24,11 @@ public class PlayerController : MonoBehaviour
 
     BuildingPreviewer buildingPreviewer;
     CountCollisions countCollisions;
+    BallCart ballCart;
 
     void Start()
     {
+        ballCart = FindObjectOfType<BallCart>();
         buildingPreviewer = FindObjectOfType<BuildingPreviewer>();
         buildingPreviewer.gameObject.SetActive(false);
         countCollisions = GetComponent<CountCollisions>();
@@ -41,8 +44,8 @@ public class PlayerController : MonoBehaviour
     void FixedUpdate()
     {
         transform.position += Vector3.right * horzInput * speed * Time.fixedDeltaTime;
-        
-        Vector3 newBounds = new Vector3( Mathf.Clamp(transform.position.x,-4,4), transform.position.y, transform.position.z);
+
+        Vector3 newBounds = new Vector3(Mathf.Clamp(transform.position.x, -4, 4), transform.position.y, transform.position.z);
         transform.position = newBounds;
 
         if (holding)
@@ -82,7 +85,7 @@ public class PlayerController : MonoBehaviour
         foreach (GameObject collidedObj in countCollisions.collisions)
         {
 
-            if (collidedObj.CompareTag("buildingKit") || collidedObj.CompareTag("unthrownBall"))
+            if (collidedObj.CompareTag("buildingKit") || collidedObj.CompareTag("ballCart"))
             {
                 if (Vector2.Distance(transform.position, collidedObj.transform.position) < distance)
                 {
@@ -97,7 +100,7 @@ public class PlayerController : MonoBehaviour
         {
             if (closest.CompareTag("buildingKit"))
             {
-                 //picking up a building kit or making another purchase from the store
+                //picking up a building kit or making another purchase from the store
                 bool canAfford = playerBase.SpendGold(closest.GetComponent<BuildingKit>().cost);    //true if have enough money. automatically detracts cost.
                 if (canAfford)
                 {
@@ -106,14 +109,16 @@ public class PlayerController : MonoBehaviour
                     firstRunHolding = true;
                 }
             }
-            else
+            else if (closest.CompareTag("ballCart") && ballCart.currentBalls > 0)
             {
+                ballCart.UpdateBalls(-1);
+
                 //picking up a ball or another holdable object
-                holding = closest;
-                holding.transform.SetParent(transform);
+                holding = Instantiate(unthrownBallPrefab, transform);
+                //holding.transform.SetParent(transform);
                 firstRunHolding = true;
             }
-            
+
         }
     }
 
@@ -123,7 +128,6 @@ public class PlayerController : MonoBehaviour
         {
             if (firstRunHolding)
             {
-                
                 buildingPreviewer.buildingToInstantiate = holding.GetComponent<BuildingKit>().towerToBuild;
                 buildingPreviewer.SetBuildingSprite();
                 firstRunHolding = false;
@@ -145,14 +149,14 @@ public class PlayerController : MonoBehaviour
             {
                 buildingPreviewer.transform.position = obj.transform.position;
                 buildingPreviewer.gameObject.SetActive(true);
-                
+
             }
-            else 
+            else
             {
                 buildingPreviewer.gameObject.SetActive(false);
             }
         }
-        else if (holding.CompareTag("unthrownBall") )
+        else if (holding.CompareTag("unthrownBall"))
         {
             holding.transform.position = ballHolder.position;
             firstRunHolding = false;
@@ -160,8 +164,6 @@ public class PlayerController : MonoBehaviour
 
         if (actionPress)
         {
-           
-
             if (holding.CompareTag("unthrownBall"))
             {
                 GameObject closest = null;
@@ -171,7 +173,6 @@ public class PlayerController : MonoBehaviour
                 //Loop through all objects the player is colliding with, and find the closest
                 foreach (GameObject collidedObj in countCollisions.collisions)
                 {
-
                     if (collidedObj.CompareTag("buildingPrefab"))
                     {
                         if (Vector2.Distance(transform.position, collidedObj.transform.position) < distance)
@@ -189,7 +190,7 @@ public class PlayerController : MonoBehaviour
                     {
                         if (building.specialBallPrefab)
                         {
-                            thrownAlready=true;
+                            thrownAlready = true;
                             Instantiate(building.specialBallPrefab, ballHolder.position, Quaternion.identity);
                             Destroy(holding);
                         }
@@ -204,7 +205,7 @@ public class PlayerController : MonoBehaviour
                     Instantiate(ballPrefab, ballHolder.position, Quaternion.identity);
                     Destroy(holding);
                 }
-               
+
             }
 
             if (holding.CompareTag("buildingKit"))
@@ -223,7 +224,7 @@ public class PlayerController : MonoBehaviour
 
                 if (obj)
                 {
-                    
+
                     holding.transform.SetParent(null);
                     buildingPreviewer.gameObject.SetActive(false);
                     Instantiate(holding.GetComponent<BuildingKit>().towerToBuild, buildingPreviewer.transform.position, Quaternion.identity);
@@ -231,15 +232,15 @@ public class PlayerController : MonoBehaviour
                     Destroy(holding);
                     holding = null;
                 }
-                    
-                
-                else 
+
+
+                else
                 {
                     print("I Cannot build here you dummy!");
                 }
-                
+
             }
-           
+
         }
     }
 
@@ -247,13 +248,15 @@ public class PlayerController : MonoBehaviour
     {
         if (horzInput > 0)
         {
-            transform.localScale = new Vector3(-1,1,1);
+            transform.localScale = new Vector3(-1, 1, 1);
             animator.Play("playerWalk");
-        } else if (horzInput < 0)
+        }
+        else if (horzInput < 0)
         {
-            transform.localScale = new Vector3(1,1,1);
+            transform.localScale = new Vector3(1, 1, 1);
             animator.Play("playerWalk");
-        } else 
+        }
+        else
         {
             animator.Play("playerIdle");
         }
