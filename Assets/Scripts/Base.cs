@@ -5,6 +5,7 @@ public class Base : MonoBehaviour
     [Header("Base Stats")]
     [SerializeField] public int health = 20;
     [SerializeField] public int gold = 30;
+    [SerializeField] public int score = 0;
 
     public void TakeDamage(int damage)
     {
@@ -26,14 +27,12 @@ public class Base : MonoBehaviour
         {
             return false;
         }
-        else 
+        else
         {
             gold -= amount;
             return true;
         }
-
     }
-
 
     private void GameOver()
     {

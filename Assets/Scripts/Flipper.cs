@@ -12,7 +12,9 @@ public class Flipper : MonoBehaviour
     [SerializeField] float rotationSpeed = .5f;
     [SerializeField] float idleZ = -16f;
     [SerializeField] float activeZ = 20f;
-    [SerializeField] Vector2 power = new Vector2(0, 100f);
+    //[SerializeField] Vector2 power = new Vector2(0, 100f);
+
+    [SerializeField] float power = 50;
     Quaternion rotation;
 
     void Start()
@@ -44,7 +46,9 @@ public class Flipper : MonoBehaviour
         {
             if (Input.GetKeyDown(KeyCode.Return))
             {
-                collision.gameObject.GetComponent<Rigidbody2D>().AddForce(power);
+                Vector2 force = transform.position - collision.gameObject.transform.position;
+                force.Normalize();
+                collision.gameObject.GetComponent<Rigidbody2D>().AddForce(force*power);
             }
         }
     }

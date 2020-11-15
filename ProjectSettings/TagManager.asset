@@ -12,6 +12,7 @@ TagManager:
   - Enemy
   - buildingKit
   - Wall
+  - Plot
   layers:
   - Default
   - TransparentFX
