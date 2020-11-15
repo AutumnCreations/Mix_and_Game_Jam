@@ -77,7 +77,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   spawner: 0
   timeToSpawn: 2
-  specialBallPrefab: {fileID: 1601842968074031256, guid: 9bb3e1b625344544da1cab8f19922185,
+  specialBallPrefab: {fileID: 4074976314161215370, guid: 386895876baa67a40a5e2b526a9279d8,
     type: 3}
   unthrownBallPrefab: {fileID: 2159501037414461779, guid: 9833b4d683f0ace4cb83e6f9382c62fe,
     type: 3}

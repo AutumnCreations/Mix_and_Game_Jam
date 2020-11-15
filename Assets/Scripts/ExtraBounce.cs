@@ -37,8 +37,8 @@ public class ExtraBounce : MonoBehaviour
             other.gameObject.GetComponent<Rigidbody2D>().AddForce(force * forceFactor);
             if (textPrefab)
             {
-                //GameObject x = Instantiate(textPrefab);
-                //x.transform.position = transform.position;
+                GameObject x = Instantiate(textPrefab);
+                x.transform.position = transform.position;
             }
         }
 

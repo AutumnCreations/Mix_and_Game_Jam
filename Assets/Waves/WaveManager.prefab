@@ -366,6 +366,8 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 98eb63ed116afbc44ababc7184703ce8, type: 2}
   - {fileID: 11400000, guid: cf952451265bc2b4d928c92e1772419d, type: 2}
   - {fileID: 11400000, guid: 0f920faa2e59744418bddbbc92d80b85, type: 2}
+  - {fileID: 11400000, guid: ab366e370dc705847822752df8c321ef, type: 2}
+  - {fileID: 11400000, guid: 8c512b38c77ee8c4fb081297d02e502d, type: 2}
   waveNumber: 0
   attacking: 1
 --- !u!1001 &4072605129941771057

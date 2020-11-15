@@ -11,14 +11,6 @@ public class ShopSlot : MonoBehaviour
     private BuildingKit kitToDispense;
     private float currentTime = 0;
 
-
-
-
-    void Update()
-    {
-       
-    }
-
     public void SellKit()
     {
         currentKit = null;
@@ -27,7 +19,7 @@ public class ShopSlot : MonoBehaviour
 
     public void Restock()
     {
-        kitToDispense = kits[Random.Range(0, kits.Length - 1)];
+        kitToDispense = kits[Random.Range(0, kits.Length)];
         currentKit = Instantiate(kitToDispense, transform.position, Quaternion.identity);
     }
 }

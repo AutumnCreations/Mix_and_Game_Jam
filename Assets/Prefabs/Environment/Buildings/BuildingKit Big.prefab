@@ -47,7 +47,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   towerToBuild: {fileID: 168285619550368989, guid: 0387b05490ff1f144971fe1de37e7bcf,
     type: 3}
-  cost: 10
+  cost: 5
 --- !u!61 &3801295939293598810
 BoxCollider2D:
   m_ObjectHideFlags: 0

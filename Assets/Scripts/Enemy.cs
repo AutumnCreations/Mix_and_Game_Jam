@@ -62,6 +62,7 @@ public class Enemy : MonoBehaviour
         Destroy(gameObject);
         GameObject explosion = Instantiate(vfxParticleSystem, transform.position, transform.rotation);
         Destroy(explosion, durationOfExplosion);
+
         //Destroy(gameObject.GetComponent<Collider2D>());
         //Destroy(gameObject.GetComponent<Collider2D>());
         //StartCoroutine("WaitToDie");

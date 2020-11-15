@@ -75,7 +75,12 @@ PrefabInstance:
     - target: {fileID: 6747201320092928827, guid: ec212a659812020419ac960786524340,
         type: 3}
       propertyPath: m_Name
-      value: Big Ball
+      value: Big Ball Variant
       objectReference: {fileID: 0}
+    - target: {fileID: 7191736435719137223, guid: ec212a659812020419ac960786524340,
+        type: 3}
+      propertyPath: m_Material
+      value: 
+      objectReference: {fileID: 6200000, guid: ae0dd156b4575cb46993272fcda4e34f, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ec212a659812020419ac960786524340, type: 3}

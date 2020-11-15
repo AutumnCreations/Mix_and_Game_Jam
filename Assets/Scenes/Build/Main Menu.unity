@@ -222,7 +222,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 242.32422, y: 161.54932}
+  m_SizeDelta: {x: 260.10205, y: 117.10547}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &64631093
 MonoBehaviour:
@@ -565,7 +565,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 470}
+  m_AnchoredPosition: {x: 0, y: 507}
   m_SizeDelta: {x: 1747.1904, y: 367.87164}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &566010738
@@ -587,7 +587,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Ball Dropper
+  m_text: Pinball Nightmare
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: c7646a9b3e2dd9d45b84fb3909bce04a, type: 2}
   m_sharedMaterial: {fileID: -3802911582687277150, guid: c7646a9b3e2dd9d45b84fb3909bce04a,
@@ -615,8 +615,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 200
-  m_fontSizeBase: 200
+  m_fontSize: 175
+  m_fontSizeBase: 175
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
