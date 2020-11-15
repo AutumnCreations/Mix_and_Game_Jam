@@ -6,7 +6,6 @@ public class Base : MonoBehaviour
     [Header("Base Stats")]
     [SerializeField] public int health = 20;
     [SerializeField] public int gold = 30;
-    [SerializeField] public int score = 0;
 
     UpdateBaseStats baseStats;
 

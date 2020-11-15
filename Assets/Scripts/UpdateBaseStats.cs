@@ -46,7 +46,7 @@ public class UpdateBaseStats : MonoBehaviour
             damageBlur.color = Color.Lerp(blurDamaged, blurNormal, fadeTime);
             healthText.color = Color.Lerp(healthDamaged, healthNormal, fadeTime);
         }
-        else if (fadeTime < damagedDuration)
+        else if (gameOver && fadeTime < damagedDuration)
         {
             fadeTime += Time.deltaTime / damagedDuration;
             damageBlur.color = Color.Lerp(blurDamaged, blurGameOver, fadeTime);

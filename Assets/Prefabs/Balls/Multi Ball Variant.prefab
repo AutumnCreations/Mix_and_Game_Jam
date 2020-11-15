@@ -86,5 +86,15 @@ PrefabInstance:
       propertyPath: m_Name
       value: Multi Ball Variant
       objectReference: {fileID: 0}
+    - target: {fileID: 8175271971020310760, guid: ec212a659812020419ac960786524340,
+        type: 3}
+      propertyPath: InitialModule.startColor.maxColor.r
+      value: 0.6745098
+      objectReference: {fileID: 0}
+    - target: {fileID: 8175271971020310760, guid: ec212a659812020419ac960786524340,
+        type: 3}
+      propertyPath: InitialModule.startColor.maxColor.g
+      value: 0.9607844
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ec212a659812020419ac960786524340, type: 3}
