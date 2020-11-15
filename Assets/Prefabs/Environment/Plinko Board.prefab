@@ -1014,7 +1014,7 @@ Transform:
   m_GameObject: {fileID: 1345881576935490983}
   m_LocalRotation: {x: 0, y: 0, z: -0.17364825, w: 0.9848078}
   m_LocalPosition: {x: 1.29, y: -4.9, z: 0}
-  m_LocalScale: {x: 0.401998, y: 0.32454, z: 0.32454}
+  m_LocalScale: {x: 0.47886005, y: 0.32454, z: 0.32454}
   m_Children:
   - {fileID: 399327065}
   m_Father: {fileID: 3293842215641448326}
@@ -1051,7 +1051,7 @@ MonoBehaviour:
   rotationSpeed: 0.1
   idleZ: -20
   activeZ: 20
-  power: {x: 0, y: 100}
+  power: 50
 --- !u!50 &8086259811498405523
 Rigidbody2D:
   serializedVersion: 4
@@ -1071,7 +1071,7 @@ Rigidbody2D:
   m_Material: {fileID: 0}
   m_Interpolate: 0
   m_SleepingMode: 1
-  m_CollisionDetection: 0
+  m_CollisionDetection: 1
   m_Constraints: 0
 --- !u!114 &1393218701
 MonoBehaviour:
@@ -1334,7 +1334,7 @@ Transform:
   m_GameObject: {fileID: 2200575805385898791}
   m_LocalRotation: {x: 0, y: 0, z: 0.17364816, w: 0.9848078}
   m_LocalPosition: {x: 3.708, y: -4.9, z: 0}
-  m_LocalScale: {x: 0.401998, y: 0.32454, z: 0.32454}
+  m_LocalScale: {x: 0.520909, y: 0.32454, z: 0.32454}
   m_Children:
   - {fileID: 674021902}
   m_Father: {fileID: 3293842215641448326}
@@ -1421,7 +1421,7 @@ MonoBehaviour:
   rotationSpeed: 0.1
   idleZ: 20
   activeZ: -20
-  power: {x: 0, y: 100}
+  power: -150
 --- !u!50 &4673718653616216420
 Rigidbody2D:
   serializedVersion: 4
@@ -1441,7 +1441,7 @@ Rigidbody2D:
   m_Material: {fileID: 0}
   m_Interpolate: 0
   m_SleepingMode: 1
-  m_CollisionDetection: 0
+  m_CollisionDetection: 1
   m_Constraints: 0
 --- !u!114 &1570549250
 MonoBehaviour:
