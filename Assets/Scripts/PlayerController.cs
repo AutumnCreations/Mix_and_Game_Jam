@@ -152,7 +152,7 @@ public class PlayerController : MonoBehaviour
                 buildingPreviewer.gameObject.SetActive(false);
             }
         }
-        else if (holding.CompareTag("unthrownBall") && firstRunHolding)
+        else if (holding.CompareTag("unthrownBall") )
         {
             holding.transform.position = ballHolder.position;
             firstRunHolding = false;
