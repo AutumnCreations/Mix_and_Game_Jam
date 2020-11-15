@@ -115,7 +115,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6d0b4b41e226bd045a172c93aa243543, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  audioClip: {fileID: 8300000, guid: 1223be9d831f24b9892464ba6d935a7f, type: 3}
+  audioClip: {fileID: 8300000, guid: 658ca4a91cf7244cda096de3d41640c3, type: 3}
+  audioScale: 0.3
 --- !u!60 &3675449112282406475
 PolygonCollider2D:
   m_ObjectHideFlags: 0

@@ -21,14 +21,22 @@ public class Ball : MonoBehaviour
 
     Collider2D lastPeg;
 
+     AudioSource audioSource;
+
+    [SerializeField] AudioClip audioClip;
+
     void Start()
     {
         ballBody = GetComponent<Rigidbody2D>();
         ballBody.AddForce(startingForce);
+        
+        audioSource = FindObjectOfType<AudioSource>();
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
+
+        audioSource.PlayOneShot(audioClip, .3f);
 
         if (collision.gameObject.CompareTag("Peg") || collision.gameObject.CompareTag("Enemy"))
         {

@@ -135,6 +135,7 @@ MonoBehaviour:
   damage: 1
   isMultiBall: 0
   isFireBall: 0
+  audioClip: {fileID: 8300000, guid: 764b4513bd21d425081def9a99e93510, type: 3}
 --- !u!50 &1367742821641959887
 Rigidbody2D:
   serializedVersion: 4

@@ -12,6 +12,9 @@ public class Obstacle : MonoBehaviour
 
     float soundTimeOut = 0;
 
+    [SerializeField]
+    float audioScale = 1;
+
     private void Start()
     {
         
@@ -35,6 +38,6 @@ public class Obstacle : MonoBehaviour
 
     public void PlaySound()
     {
-        audioSource.PlayOneShot(audioClip);
+        audioSource.PlayOneShot(audioClip, audioScale);
     }
 }

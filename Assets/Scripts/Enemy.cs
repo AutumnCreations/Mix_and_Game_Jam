@@ -25,7 +25,9 @@ public class Enemy : MonoBehaviour
 
     Transform playerBaseTransform;
 
+     AudioSource audioSource;
 
+    [SerializeField] AudioClip audioClip;
 
     private void Start()
     {
@@ -33,6 +35,8 @@ public class Enemy : MonoBehaviour
         bounce = GetComponent<ExtraBounce>();
 
         playerBaseTransform = FindObjectOfType<Base>().transform;
+
+         audioSource = FindObjectOfType<AudioSource>();
     }
 
     void Update()
@@ -74,6 +78,7 @@ public class Enemy : MonoBehaviour
 
     private void TakeDamage(int damageTaken)
     {
+        audioSource.PlayOneShot(audioClip, .6f);
         bounce.textMesh.text = damageTaken.ToString();
         health -= damageTaken;
 

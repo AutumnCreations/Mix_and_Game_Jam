@@ -172,6 +172,8 @@ MonoBehaviour:
   towerPlacer: {fileID: 3106117309104678755}
   ballHolder: {fileID: 1007670469414624840}
   holding: {fileID: 0}
+  textPrefab: {fileID: 1285193052085568264, guid: 837fe387c21c49b4084896a4212a51f7,
+    type: 3}
 --- !u!50 &7840463127583982202
 Rigidbody2D:
   serializedVersion: 4

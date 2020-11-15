@@ -179,6 +179,7 @@ MonoBehaviour:
   vfxParticleSystem: {fileID: 5322219118354461726, guid: fc635a0a9ac774852a851b292039036c,
     type: 3}
   durationOfExplosion: 0.2
+  audioClip: {fileID: 8300000, guid: 5595a30dc91214be385acd90a5a499bf, type: 3}
 --- !u!114 &7634906685512074803
 MonoBehaviour:
   m_ObjectHideFlags: 0
