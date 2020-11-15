@@ -14,6 +14,8 @@ public class Enemy : MonoBehaviour
     [SerializeField] float randomOffsetMin = .01f;
     [Tooltip("Maximum force to add to the ball when colliding with a peg")]
     [SerializeField] float randomOffsetMax = .1f;
+    [SerializeField] GameObject vfxParticleSystem;
+    [SerializeField] float durationOfExplosion;
 
     private float xOffset;
 
@@ -55,17 +57,22 @@ public class Enemy : MonoBehaviour
     private void Die()
     {
         FindObjectOfType<Base>().GetGold(1);
-        Destroy(gameObject.GetComponent<Collider2D>());
+        Destroy(gameObject);
+        GameObject explosion = Instantiate(vfxParticleSystem, transform.position, transform.rotation);
+        Destroy(explosion, durationOfExplosion);
         //Destroy(gameObject.GetComponent<Collider2D>());
-        StartCoroutine("WaitToDie");
+        //Destroy(gameObject.GetComponent<Collider2D>());
+        //StartCoroutine("WaitToDie");
+        
+
     }
 
-    IEnumerator WaitToDie()
-    {
-        yield return new WaitForSeconds(1f);
-        print(gameObject.name + " died.");
-        Destroy(gameObject);
-    }
+    //IEnumerator WaitToDie()
+    //{
+    //    yield return new WaitForSeconds(1f);
+    //    print(gameObject.name + " died.");
+    //    Destroy(gameObject);
+    //}
 
     private void TakeDamage(int damageTaken)
     {
