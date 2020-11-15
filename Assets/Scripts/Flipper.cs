@@ -9,7 +9,7 @@ public class Flipper : MonoBehaviour
     //private JointMotor2D motor;
     //int hingeCount = 3;
 
-    [SerializeField] float rotationSpeed = .5f;
+    [SerializeField] float rotationSpeed = 50f;
     [SerializeField] float idleZ = -16f;
     [SerializeField] float activeZ = 20f;
     //[SerializeField] Vector2 power = new Vector2(0, 100f);
@@ -25,7 +25,20 @@ public class Flipper : MonoBehaviour
         Vector3 activeRotation = new Vector3(0, 0, activeZ);
     }
 
-    void Update()
+    private void OnCollisionStay2D(Collision2D collision)
+    {
+        if (collision.gameObject.GetComponent<Ball>())
+        {
+            if (Input.GetKeyDown(KeyCode.Return))
+            {
+                Vector2 force = collision.contacts[0].point - new Vector2(collision.gameObject.transform.position.x, collision.gameObject.transform.position.y);
+                force.Normalize();
+                collision.gameObject.GetComponent<Rigidbody2D>().AddForce(force * Vector2.up * power);
+            }
+        }
+    }
+
+    void LateUpdate()
     {
         if (Input.GetMouseButtonDown(0) || Input.GetKey(KeyCode.Return))
         {
@@ -35,26 +48,8 @@ public class Flipper : MonoBehaviour
         {
             rotation = Quaternion.Euler(0, 0, idleZ);
         }
-        transform.rotation = Quaternion.Lerp(transform.rotation, rotation, rotationSpeed);
-    }
+        transform.rotation = Quaternion.Lerp(transform.rotation, rotation, rotationSpeed * Time.deltaTime);
 
-
-
-    private void OnCollisionStay2D(Collision2D collision)
-    {
-        if (collision.gameObject.GetComponent<Ball>())
-        {
-            if (Input.GetKeyDown(KeyCode.Return))
-            {
-                Vector2 force = collision.contacts[0].point - new Vector2(collision.gameObject.transform.position.x,collision.gameObject.transform.position.y);
-                force.Normalize();
-                collision.gameObject.GetComponent<Rigidbody2D>().AddForce(force*power);
-            }
-        }
-    }
-
-    void FixedUpdate()
-    {
         //if (Input.GetMouseButtonDown(0) || Input.GetKey(KeyCode.Return))
         //{
         //    //hingeCount = 3;
