@@ -38,6 +38,7 @@ public class BallCart : MonoBehaviour
     public void UpdateBalls(int ballAmount)
     {
         currentBalls += ballAmount;
+        currentBalls = Mathf.Clamp(currentBalls, 0, maxBalls);
         DeactivateBallSprites();
 
         switch (currentBalls)

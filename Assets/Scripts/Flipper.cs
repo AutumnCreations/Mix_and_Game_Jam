@@ -33,7 +33,8 @@ public class Flipper : MonoBehaviour
             {
                 Vector2 force = collision.contacts[0].point - new Vector2(collision.gameObject.transform.position.x, collision.gameObject.transform.position.y);
                 force.Normalize();
-                collision.gameObject.GetComponent<Rigidbody2D>().AddForce(force * Vector2.up * power);
+                var ball = collision.gameObject.GetComponent<Rigidbody2D>();
+                ball.AddForce(force * Vector2.up * power + (ball.velocity * -1));
             }
         }
     }

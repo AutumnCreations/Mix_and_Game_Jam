@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System.Collections;
+using UnityEngine;
 
 public class Base : MonoBehaviour
 {
@@ -7,8 +8,16 @@ public class Base : MonoBehaviour
     [SerializeField] public int gold = 30;
     [SerializeField] public int score = 0;
 
+    UpdateBaseStats baseStats;
+
+    private void Start()
+    {
+        baseStats = FindObjectOfType<UpdateBaseStats>();
+    }
+
     public void TakeDamage(int damage)
     {
+        baseStats.TakeDamage();
         health -= damage;
         if (health <= 0)
         {
@@ -37,6 +46,14 @@ public class Base : MonoBehaviour
     private void GameOver()
     {
         print("Goodbye!");
+        baseStats.gameOver = true;
+        StartCoroutine("LoadScene");
+    }
+
+    private IEnumerator LoadScene()
+    {
+        yield return new WaitForSeconds(3);
+        FindObjectOfType<SceneLoader>().LoadNextScene();
     }
 
     private void OnTriggerEnter2D(Collider2D collision)

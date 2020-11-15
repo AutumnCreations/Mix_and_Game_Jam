@@ -166,9 +166,7 @@ MonoBehaviour:
     type: 3}
   unthrownBallPrefab: {fileID: 2159501037414461779, guid: 9833b4d683f0ace4cb83e6f9382c62fe,
     type: 3}
-  speed: 1
-  walkSpeed: 1
-  runSpeed: 2
+  speed: 2
   towerPlacer: {fileID: 3106117309104678755}
   ballHolder: {fileID: 1007670469414624840}
   holding: {fileID: 0}

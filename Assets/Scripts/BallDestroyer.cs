@@ -23,9 +23,8 @@ public class BallDestroyer : MonoBehaviour
 
     private IEnumerator RespawnBall()
     {
-        yield return new WaitForSeconds(1f);
+        yield return new WaitForSeconds(.5f);
         var ballsInWorld = FindObjectsOfType<Ball>();
-        print(ballsInWorld.Length);
         if (ballsInWorld.Length < ballCart.maxBalls)
         {
             ballCart.UpdateBalls(1);

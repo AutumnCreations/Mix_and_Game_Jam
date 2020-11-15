@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Coffin : MonoBehaviour
+public class Obstacle : MonoBehaviour
 {
     Animator animator;
 

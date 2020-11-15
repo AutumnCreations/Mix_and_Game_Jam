@@ -8,8 +8,8 @@ public class PlayerController : MonoBehaviour
     [SerializeField] GameObject ballPrefab;
     [SerializeField] GameObject unthrownBallPrefab;
     [SerializeField] float speed;
-    [SerializeField] float walkSpeed;
-    [SerializeField] float runSpeed;
+    //[SerializeField] float walkSpeed;
+    //[SerializeField] float runSpeed;
     [SerializeField] Transform towerPlacer;
     [SerializeField] Transform ballHolder;
 
@@ -66,14 +66,14 @@ public class PlayerController : MonoBehaviour
         {
             actionPress = true;
         }
-        if (Input.GetKeyDown(KeyCode.RightShift))
-        {
-            speed = runSpeed;
-        }
-        else if (Input.GetKeyUp(KeyCode.RightShift))
-        {
-            speed = walkSpeed;
-        }
+        //if (Input.GetKeyDown(KeyCode.RightShift))
+        //{
+        //    speed = runSpeed;
+        //}
+        //else if (Input.GetKeyUp(KeyCode.RightShift))
+        //{
+        //    speed = walkSpeed;
+        //}
     }
 
     private void HandleGrab()
@@ -85,7 +85,7 @@ public class PlayerController : MonoBehaviour
         foreach (GameObject collidedObj in countCollisions.collisions)
         {
 
-            if (collidedObj.CompareTag("buildingKit") || collidedObj.CompareTag("ballCart"))
+            if (collidedObj.CompareTag("shopSlot") || collidedObj.CompareTag("ballCart"))
             {
                 if (Vector2.Distance(transform.position, collidedObj.transform.position) < distance)
                 {
@@ -98,14 +98,17 @@ public class PlayerController : MonoBehaviour
         //grab hold of the closest object
         if (closest)
         {
-            if (closest.CompareTag("buildingKit"))
+            if (closest.CompareTag("shopSlot"))
             {
+                var shopSlot = closest.GetComponent<ShopSlot>();
+                if (!shopSlot.currentKit) { return; }
                 //picking up a building kit or making another purchase from the store
-                bool canAfford = playerBase.SpendGold(closest.GetComponent<BuildingKit>().cost);    //true if have enough money. automatically detracts cost.
+                bool canAfford = playerBase.SpendGold(shopSlot.currentKit.cost);    //true if have enough money. automatically detracts cost.
                 if (canAfford)
                 {
-                    holding = closest;
+                    holding = shopSlot.currentKit.gameObject;
                     holding.transform.SetParent(transform);
+                    shopSlot.SellKit();
                     firstRunHolding = true;
                 }
             }
@@ -193,6 +196,7 @@ public class PlayerController : MonoBehaviour
                             thrownAlready = true;
                             Instantiate(building.specialBallPrefab, ballHolder.position, Quaternion.identity);
                             Destroy(holding);
+                            Destroy(building.gameObject);
                         }
                     }
                 }
@@ -229,7 +233,7 @@ public class PlayerController : MonoBehaviour
                     buildingPreviewer.gameObject.SetActive(false);
                     Instantiate(holding.GetComponent<BuildingKit>().towerToBuild, buildingPreviewer.transform.position, Quaternion.identity);
                     Destroy(obj);
-                    Destroy(holding);
+                    Destroy(holding.gameObject);
                     holding = null;
                 }
 
