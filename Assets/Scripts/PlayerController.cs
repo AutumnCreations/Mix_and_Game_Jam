@@ -12,6 +12,8 @@ public class PlayerController : MonoBehaviour
     [SerializeField] Transform towerPlacer;
     [SerializeField] Transform ballHolder;
 
+    Animator animator;    
+
     float horzInput;
     bool actionPress;
     bool firstRunHolding = false;
@@ -27,16 +29,21 @@ public class PlayerController : MonoBehaviour
         buildingPreviewer = FindObjectOfType<BuildingPreviewer>();
         buildingPreviewer.gameObject.SetActive(false);
         countCollisions = GetComponent<CountCollisions>();
+        animator = GetComponent<Animator>();
     }
 
     void Update()
     {
         GetUserInput();
+        HandleAnimation();
     }
 
     void FixedUpdate()
     {
-        transform.position += transform.right * horzInput * speed * Time.fixedDeltaTime;
+        transform.position += Vector3.right * horzInput * speed * Time.fixedDeltaTime;
+        
+        Vector3 newBounds = new Vector3( Mathf.Clamp(transform.position.x,-4,4), transform.position.y, transform.position.z);
+        transform.position = newBounds;
 
         if (holding)
         {
@@ -233,6 +240,22 @@ public class PlayerController : MonoBehaviour
                 
             }
            
+        }
+    }
+
+    void HandleAnimation()
+    {
+        if (horzInput > 0)
+        {
+            transform.localScale = new Vector3(-1,1,1);
+            animator.Play("playerWalk");
+        } else if (horzInput < 0)
+        {
+            transform.localScale = new Vector3(1,1,1);
+            animator.Play("playerWalk");
+        } else 
+        {
+            animator.Play("playerIdle");
         }
     }
 }
