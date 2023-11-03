@@ -368,6 +368,11 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 0f920faa2e59744418bddbbc92d80b85, type: 2}
   - {fileID: 11400000, guid: ab366e370dc705847822752df8c321ef, type: 2}
   - {fileID: 11400000, guid: 8c512b38c77ee8c4fb081297d02e502d, type: 2}
+  - {fileID: 11400000, guid: 0da8802f25ca84e43bae5d6bda96d9f1, type: 2}
+  - {fileID: 11400000, guid: 0f88f4d38270fc24f88892dab1d0bf03, type: 2}
+  - {fileID: 11400000, guid: c97a4e7f3ce5b6f42b234564db32a00a, type: 2}
+  - {fileID: 11400000, guid: 32412be35a1fe2548becd4fbebbfdbc6, type: 2}
+  - {fileID: 11400000, guid: d6dffb4d31a910b40a8de9702a65ab97, type: 2}
   waveNumber: 0
   attacking: 1
 --- !u!1001 &4072605129941771057
